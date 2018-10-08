@@ -3,7 +3,7 @@ A Lightweight Node JS Client to connect your low power device to the IoT.nxt Saa
 
 v2.0.1
 
-You can follow the instructional video her start from scrath : https://www.youtube.com/watch?v=DVdypq6D_zs&list=PL-8IgX2Bx5hVou2kqyNVZlRlgdreiwtL0
+You can follow the instructional video her start from scratch : https://www.youtube.com/watch?v=DVdypq6D_zs&list=PL-8IgX2Bx5hVou2kqyNVZlRlgdreiwtL0
 Or You can download the PiZero img here and get started : https://github.com/IoT-nxt/ReadyIoTnxt-Images
 You can follow the instructional video her start from IMG : https://www.youtube.com/watch?v=DVdypq6D_zs&list=PL-8IgX2Bx5hVou2kqyNVZlRlgdreiwtL0
 
@@ -12,12 +12,12 @@ Lets start from scratch
 
 -download and install pibakery ,  http://www.pibakery.org/ yes its a gig and a bit but the most handy tool you will use to date when dealing with pi units
 -download and install VNC viewer for your pc https://www.realvnc.com/en/connect/download/viewer/ 
--downlaod and install angry ip scanner https://angryip.org/download/#windows 
+-download and install angry ip scanner https://angryip.org/download/#windows 
 
 _______________________________
 Hardware: 
 
-Lets prep our hardware , you can buy a Raspberry Pi ( Zero - 3 B+) all compatable 
+Lets prep our hardware , you can buy a Raspberry Pi ( Zero - 3 B+) all compatible 
 Important , but a 16GB SSD card and higher , you might need to have some good space for caching and to also run other POC's from the same device without having to wipe and start again
 Take your SD card and plug into your computer 
 
@@ -40,7 +40,7 @@ _________________________________
 Lets find that pi 
 
 Open angry ip scanner, and start scanning your subnet network 
-Find the PI unit in the list , this would be the manufacturere pi foundation as the PC make 
+Find the PI unit in the list , this would be the manufacturer pi foundation as the PC make 
 __________________________________
 Lets connect to the pi
 
@@ -55,7 +55,7 @@ save and reboot
 ___________________________________
 UPDATE, Update , upgrade
 
-now open a termiinal and type the following (or paste in :) and run each line seperately 
+now open a terminal and type the following (or paste in :) and run each line separately 
 
 sudo apt-get update
 sudo apt-get upgrade -y 
@@ -87,7 +87,7 @@ We would need some things installed before we continue
 The processor on Raspberry Pi is ARM, but depends on the model there can be ARMv6, ARMv7 or ARMv8. This 3 versions of ARM is supported by Node.js.
 
 So first of all type this in your terminal on raspberry pi to detect the version that you need:
-Run un termiinal:
+Run on terminal:
 uname -m
 If the response starts with armv6 than that's the version that you will need. For example for raspberry pi zero W you will need ARMv6
 
@@ -103,7 +103,7 @@ tar -xzf node-v8.9.0-linux-armv6l.tar.gz
 cd node-v6.11.1-linux-armv6l/
 sudo cp -R * /usr/local/
 
-Check if node and npm are installed correctly. This lines should print the version of node and npm installed.
+Check if node and npm are installed correctly. This line should print the version of node and npm installed.
 
 node -v
 npm -v
