@@ -91,10 +91,14 @@ Obviously deleting apps free up space, that’s not a surprise to anyone, but it
 
 LibreOffice takes up around 250MB, while Wolfram clogs up about 650MB. This means they’re two of the bigger space hogs on the Pi. Obviously, if you’re using these programs, don’t delete them. But if you aren’t, getting rid of them is super easy. Just run these commands in the terminal to get rid of 
 ##### Wolfram
-    sudo apt-get purge wolfram-engine sudo apt-get clean sudo apt-get autoremove
+    sudo apt-get purge wolfram-engine 
+    sudo apt-get clean 
+    sudo apt-get autoremove
 
 ##### LibreOffice
-    sudo apt-get purge libreoffice sudo apt-get clean sudo apt-get autoremove
+    sudo apt-get purge libreoffice 
+    sudo apt-get clean 
+    sudo apt-get autoremove
   
 Other space wasting culprits could include **minecraft-pi** and **sonic-pi**. Of course, if you don’t want any additional software, you can use the Raspbian Lite image from the get-go. This tutorial doesn't cover that however. The Lite image just includes the necessities to run Raspbian without any of the extra apps.
 
