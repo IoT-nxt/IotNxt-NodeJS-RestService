@@ -134,7 +134,9 @@ For example I will need ARMv6 and I will type this in my terminal:
 
 Using `tar` that is already installed on your Raspberry Pi, just type the following; (make sure you change the filename with the file that you have)
 
-    tar -xzf node-v8.9.0-linux-armv6l.tar.gz cd node-v6.11.1-linux-armv6l/ sudo cp -R * /usr/local/
+    tar -xzf node-v8.9.0-linux-armv6l.tar.gz 
+    cd node-v8.9.0-linux-armv6l/ 
+    sudo cp -R * /usr/local/
 
 Before we carry on, let's check if **node** and **npm** are installed correctly. These lines should print the versions of them.
 
