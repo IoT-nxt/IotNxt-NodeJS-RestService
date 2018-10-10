@@ -1,119 +1,149 @@
-A Lightweight Node JS Client to connect your low power device to the IoT.nxt SaaS Platform
-=================
+
+# A Lightweight Node JS Client to connect your low power device to the IoT.nxt SaaS Platform
 
 v2.0.1
 
-You can follow the instructional video her start from scrath : https://www.youtube.com/watch?v=DVdypq6D_zs&list=PL-8IgX2Bx5hVou2kqyNVZlRlgdreiwtL0
-Or You can download the PiZero img here and get started : https://github.com/IoT-nxt/ReadyIoTnxt-Images
-You can follow the instructional video her start from IMG : https://www.youtube.com/watch?v=DVdypq6D_zs&list=PL-8IgX2Bx5hVou2kqyNVZlRlgdreiwtL0
+This is a tutorial on how to get your Raspberry Pi set up, using the Node.js client, to connect your low power device to the IoT.nxt SaaS platform. 
+You can also look at the [instructional video](https://www.youtube.com/watch?v=DVdypq6D_zs&list=PL-8IgX2Bx5hVou2kqyNVZlRlgdreiwtL0) for more information.
 
---------------------------------
-Lets start from scratch 
+Alternatively, you can download the PiZero img [here](https://github.com/IoT-nxt/ReadyIoTnxt-Images).
 
--download and install pibakery ,  http://www.pibakery.org/ yes its a gig and a bit but the most handy tool you will use to date when dealing with pi units
--download and install VNC viewer for your pc https://www.realvnc.com/en/connect/download/viewer/ 
--downlaod and install angry ip scanner https://angryip.org/download/#windows 
+*Please note that the software used in this tutorial, is what we found to be the easiest to get started with. If you have other preferred methods on how to set up your Pi, feel free to use it. In the end, all that is needed is a working Pi, on the network, running Node.js.*
 
-_______________________________
-Hardware: 
+----------
 
-Lets prep our hardware , you can buy a Raspberry Pi ( Zero - 3 B+) all compatable 
-Important , but a 16GB SSD card and higher , you might need to have some good space for caching and to also run other POC's from the same device without having to wipe and start again
-Take your SD card and plug into your computer 
+## Requirements
+### Software
+Download the following on your PC.
+- [PiBakery](http://pibakery.org/)
+- [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)
+- [Angry IP Scanner](https://angryip.org/download/#windows)
 
-_______________________________
-Load OS on SD card
+----------
 
-To do this , start pibakery , select any startup scripts from the startup tab (View video if needed) like the WIFI setup 
-Very IMPORTANT! Also drag in the enable VNC for the pi unit , we will use VNC to connect to the PI and setup everything we need , you can always disable when we are done
-Then push on the blue write to SD card button , the top right corner
-Select the SD card 
-Select Raspbian Full 
-Wait for the card to write
+### Hardware
 
----------------------------------
-Plug in your Pi unit
+- Raspberry Pi 3 B+ ***or***
+- Raspberry Pi Zero
+- 16GB SD card (recommended*)
 
-Now load your sd card into your pi and startup the pi unit
+Take your SD card and plug into your computer
 
-_________________________________
-Lets find that pi 
+**The card doesn't have to be 16GB big, but is recommended as you might need to have some good space for caching and to also run other POC's from the same device, without having to wipe it and start again.* 
 
-Open angry ip scanner, and start scanning your subnet network 
-Find the PI unit in the list , this would be the manufacturere pi foundation as the PC make 
-__________________________________
-Lets connect to the pi
+----------
+## Let's get started
+### Load OS on SD card
 
-Now open VNC viewer and type in the pi ip address and connect to the pi unit
-First lets make the screen bigger 
-Open a terminal and type 
-sudo rapi-config 
+Now it is time to prep our MicroSD card. To do this, 
+1. Start PiBakery
+2. Build the basic recipe and fill in the Network SSID and Password
+:: On first boot
+:: Setup WiFi
+:: Enable VNC Server at Boot
+3. Click the blue SD card button *Write* in the top right corner
+4. Select the drive that the SD card is picked up from
+5. Select Raspbian Full *(Raspbian Lite is not covered in this tutorial)*
+6. Click *Start write*
+7. Wait
 
-go to advanced options  and select resolution , here you can set the bigger resolution 
-save and reboot
+----------
 
-___________________________________
-UPDATE, Update , upgrade
+### Plug in your Pi unit
 
-now open a termiinal and type the following (or paste in :) and run each line seperately 
+Now load your MicroSD card into your Pi and startup the Pi unit
 
-sudo apt-get update
-sudo apt-get upgrade -y 
+----------
 
-___________________________________
-Make some space 
+### Let's find the Pi
 
-One of the really nice things about the newest builds of Raspbian is that it comes with just about all the software you need to get running. The downside of that is that all that software takes up a ton of space. RasPi.tv points out you can quickly snag about a 1GB back by deleting two apps: LibreOffice and Wolfram.
+Open **Angry IP Scanner**, and start scanning your subnet network. Find the Pi unit in the list. This would be the manufacturer "Pi Foundation" as the PC make, or **raspberrypi.local** as the hostname.
 
-Obviously deleting apps frees up space, that’s not a surprise to anyone, but it’s easy to forget how important this is when you’re working with an operating system that runs off a MicroSD card. Every little bit of space matters in this case, and if you’re new to Linux or the Raspberry Pi, you might not know how exactly to go about freeing up space.
+----------
 
-LibreOffice takes up around 250MB, while Wolfram clogs up about 650MB. This means they’re too of the bigger space hogs on the Pi. Obviously, if you’re using these programs, don’t delete them. But if you aren’t, getting rid of them is super easy. Just run these commands to get rid of Wolfram:
+### Let's connect to the Pi
 
-Run:
-sudo apt-get purge wolfram-engine
-sudo apt-get clean
-sudo apt-get autoremove
+Open VNC viewer, type in the Pi's IP address and connect to the Pi unit.
+Type in the username and password. Default is ***pi*** and ***raspberry*** respectively, unless it was changed during the baking process.
+First let's make the screen bigger. Open a terminal and type 
+`sudo rapi-config`
 
-You can do the same for LibreOffice by substituting libreoffice* in for wolfram-engine above. 
-Other space wasting culprits could include minecraft-pi and sonic-pi. Of course, if you don’t want any additional software, 
-just use the Raspbian Lite image from the get-go. The Lite image just includes the necessities to run Raspbian without any of the extra apps.
+Go to advanced options and select *Resolution*. Here you can set a bigger resolution.
+Save and reboot the Pi.
 
-reboot pi when done
-_________________________________
-Install some things 
+----------
+
+### Update and upgrade
+
+Now open a terminal and type the following; (run each separately)
+
+    sudo apt-get update 
+
+    sudo apt-get upgrade -y
+
+----------
+
+### Make some space
+
+One of the really nice things about the newest builds of Raspbian, is that it comes with just about all the software you need to get running. The downside of that is that all that software takes up a ton of space. RasPi.tv points out you can quickly snag about a 1GB back by deleting two apps: **LibreOffice** and **Wolfram**.
+
+Obviously deleting apps free up space, that’s not a surprise to anyone, but it’s easy to forget how important this is when you’re working with an operating system that runs off a MicroSD card. Every little bit of space matters in this case, and if you’re new to Linux or the Raspberry Pi, you might not know how exactly to go about freeing up space.
+
+LibreOffice takes up around 250MB, while Wolfram clogs up about 650MB. This means they’re two of the bigger space hogs on the Pi. Obviously, if you’re using these programs, don’t delete them. But if you aren’t, getting rid of them is super easy. Just run these commands in the terminal to get rid of 
+##### Wolfram
+    sudo apt-get purge wolfram-engine sudo apt-get clean sudo apt-get autoremove
+
+##### LibreOffice
+    sudo apt-get purge libreoffice sudo apt-get clean sudo apt-get autoremove
+  
+Other space wasting culprits could include **minecraft-pi** and **sonic-pi**. Of course, if you don’t want any additional software, you can use the Raspbian Lite image from the get-go. This tutorial doesn't cover that however. The Lite image just includes the necessities to run Raspbian without any of the extra apps.
+
+Reboot your Pi when done
+
+----------
+
+### Install some Node and Git
 
 We would need some things installed before we continue 
--NodeJS 
+
+##### NodeJS 
 The processor on Raspberry Pi is ARM, but depends on the model there can be ARMv6, ARMv7 or ARMv8. This 3 versions of ARM is supported by Node.js.
 
-So first of all type this in your terminal on raspberry pi to detect the version that you need:
-Run un termiinal:
-uname -m
-If the response starts with armv6 than that's the version that you will need. For example for raspberry pi zero W you will need ARMv6
+First detect what processor is running on your Pi, by typing the following in a terminal
 
-Go to node.js download page (https://nodejs.org/en/download/) and check right click on the version of ARM that you need and choose Copy Link address.
+    uname -m
 
-After that in the terminal using wget download the tar.gz file for that version. Just type wget, paste the link copied before and make sure the extension is .tar.gz. If it's something else change it to this and it should be ok. For example I will need ARMv6 and I will type this in my terminal:
+If the response starts with **armv6** then that's the version that you will need. For example for Raspberry Pi Zero W will need ARMv6
 
-wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.tar.gz   (You can change the arm version in the link) 
+Go to the [Node.js](https://nodejs.org/en/download/) download page. Right click on the version of ARM that you need and choose ***Copy Link address***.
 
-Using tar that is already installed with the system on your raspberry pi just type this (make sure you change the filename with the file that you have)
+Open a terminal, and download the file using wget. You do this by typing
 
-tar -xzf node-v8.9.0-linux-armv6l.tar.gz
-cd node-v6.11.1-linux-armv6l/
-sudo cp -R * /usr/local/
+    wget <the copied link address>
+Make sure the extension is .tar.gz. If it's something else change it to this and it should be ok.
 
-Check if node and npm are installed correctly. This lines should print the version of node and npm installed.
+For example I will need ARMv6 and I will type this in my terminal:
 
-node -v
-npm -v
+    wget  https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.tar.gz
 
-Now you have node.js installed on your Raspberry Pi and working so you can build something using node
+(You can change the arm version in the link)
 
-Next we install git :
+Using `tar` that is already installed on your Raspberry Pi, just type the following; (make sure you change the filename with the file that you have)
 
-sudo apt-get install git
+    tar -xzf node-v8.9.0-linux-armv6l.tar.gz cd node-v6.11.1-linux-armv6l/ sudo cp -R * /usr/local/
 
-git clone https://github.com/IoT-nxt/IotNxt-NodeJS-RestService.git
+Before we carry on, let's check if **node** and **npm** are installed correctly. These lines should print the versions of them.
 
-__________________________________
+    node -v 
+
+    npm -v
+
+Now you have Node.js installed on your Raspberry Pi, and working, you can build something using node.
+
+##### Git
+Simply run the following to install git;
+
+    sudo apt-get install git
+Then clone the *IotNxt-NodeJS-RestService* repo by running
+
+    git clone https://github.com/IoT-nxt/IotNxt-NodeJS-RestService.git
